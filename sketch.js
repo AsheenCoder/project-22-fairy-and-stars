@@ -43,15 +43,22 @@ function setup() {
 function draw() {
   background(bgImg);
   if(keyDown("left_arrow")){
-	fairy.x=-5
+	fairy.x-=5
   }
   
   if(keyDown("right_arrow")){
-	fairy.x= +5
+	fairy.x+=5
   }
 
   if(keyDown("down_arrow")){
-	starBody.x = +10
+	Matter.Body.setStatic(starBody,false) 
+  }
+
+  star.x=starBody.position.x
+  star.y=starBody.position.y
+
+  if (starBody.position.y > 470){
+	Matter.Body.setStatic(starBody,true) 
   }
  
    drawSprites();
